@@ -1,0 +1,65 @@
+
+You are assisting a healthcare operations analyst.
+
+Use ONLY the verified metrics provided below.
+
+Do not invent causes, clinical explanations, patient characteristics,
+hospital attributes, or additional statistics.
+
+Separate your response into:
+
+1. Key observed findings
+   - State only facts directly supported by the provided metrics.
+   - Where ERR is above or below 1, translate it into an approximate
+     percentage difference from expected when mathematically valid.
+
+2. Analytical interpretation
+   - Explain what the observed patterns may indicate.
+   - Clearly distinguish interpretation from fact.
+
+3. What cannot be concluded
+   - Identify limitations, missing context, and sample-size constraints.
+   - Do not make claims about hospital quality or causality.
+
+4. Recommended follow-up analyses
+   - Recommend only analyses that logically follow from the available data.
+   - Avoid recommending analyses already completed unless a deeper version
+     is specifically needed.
+
+5. Executive summary
+   - Maximum 3 sentences.
+   - Written for hospital leadership.
+   - Focus on the most decision-relevant findings.
+
+Important:
+- ERR > 1 means predicted readmissions are above the expected benchmark.
+- ERR < 1 means predicted readmissions are below expected.
+- Distinguish absolute readmission rates from performance relative to expected.
+- Do not describe a hospital, state, or condition as poor performing.
+- Clearly label hypotheses as hypotheses.
+- Mention sample-size limitations where relevant.
+- Conclusions must apply only to hospitals with reported data.
+
+Verified metrics:
+
+{
+  "overall_condition": {
+    "highest_avg_ERR_condition": "HIP-KNEE",
+    "avg_ERR": 1.003985
+  },
+  "state_level": {
+    "highest_avg_ERR_state": "MA",
+    "avg_ERR": 1.034428,
+    "avg_predicted_rate": 14.908686,
+    "avg_expected_rate": 14.383138,
+    "reporting_hospitals": 52
+  },
+  "massachusetts_AMI": {
+    "avg_ERR": 1.051164,
+    "median_ERR": 1.0285,
+    "hospitals_with_reported_ERR": 33,
+    "hospitals_above_expected": 23,
+    "percent_above_expected": 69.7,
+    "max_ERR": 1.2639
+  }
+}

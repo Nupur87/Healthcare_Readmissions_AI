@@ -1,0 +1,55 @@
+{
+  "overall_condition": {
+    "highest_avg_ERR_condition": "HIP-KNEE",
+    "avg_ERR": 1.003985
+  },
+  "state_level": {
+    "highest_avg_ERR_state": "MA",
+    "avg_ERR": 1.034428,
+    "avg_predicted_rate": 14.908686,
+    "avg_expected_rate": 14.383138,
+    "reporting_hospitals": 52
+  },
+  "massachusetts_AMI": {
+    "avg_ERR": 1.051164,
+    "median_ERR": 1.0285,
+    "hospitals_with_reported_ERR": 33,
+    "hospitals_above_expected": 23,
+    "percent_above_expected": 69.7,
+    "max_ERR": 1.2639
+  },
+  "ownership": {
+    "proprietary_avg_ERR": 1.012651,
+    "proprietary_median_ERR": 1.011725,
+    "proprietary_hospitals": 544,
+    "pattern": "Proprietary hospitals had average ERR above 1 across all six HRRP conditions",
+    "condition_specific_hospital_counts": {
+      "AMI": 306,
+      "CABG": 136,
+      "COPD": 407,
+      "HF": 474,
+      "HIP_KNEE": 268,
+      "PN": 502
+    }
+  },
+  "hospital_rating": {
+    "1_star_avg_ERR": 1.045348,
+    "2_star_avg_ERR": 1.023037,
+    "3_star_avg_ERR": 1.005613,
+    "4_star_avg_ERR": 0.985902,
+    "5_star_avg_ERR": 0.964201,
+    "1_star_hospitals": 169,
+    "2_star_hospitals": 567,
+    "3_star_hospitals": 840,
+    "4_star_hospitals": 758,
+    "5_star_hospitals": 287,
+    "pattern": "Average ERR decreased consistently as hospital rating increased"
+  },
+  "rating_by_condition": {
+    "1_star_all_conditions_above_expected": true,
+    "5_star_all_conditions_below_expected": true,
+    "strongest_gap_condition": "HIP-KNEE",
+    "hip_knee_1_star_ERR": 1.108379,
+    "hip_knee_5_star_ERR": 0.944577
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "overall_condition": {
+    "highest_avg_ERR_condition": "HIP-KNEE",
+    "avg_ERR": 1.003985
+  },
+  "state_level": {
+    "highest_avg_ERR_state": "MA",
+    "avg_ERR": 1.034428,
+    "avg_predicted_rate": 14.908686,
+    "avg_expected_rate": 14.383138,
+    "reporting_hospitals": 52
+  },
+  "massachusetts_AMI": {
+    "avg_ERR": 1.051164,
+    "median_ERR": 1.0285,
+    "hospitals_with_reported_ERR": 33,
+    "hospitals_above_expected": 23,
+    "percent_above_expected": 69.7,
+    "max_ERR": 1.2639
+  }
+}
