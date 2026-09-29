@@ -17,112 +17,11 @@ st.set_page_config(
     layout="wide"
 )
 
-st.markdown("""
-<style>
-
-/* Keep background white */
-.stApp {
-    background-color: white;
-}
-
-/* Headings */
-h1, h2, h3,
-[data-testid="stHeadingWithActionElements"] h1,
-[data-testid="stHeadingWithActionElements"] h2,
-[data-testid="stHeadingWithActionElements"] h3 {
-    color: #16324F !important;
-}
-
-/* KPI cards */
-[data-testid="stMetric"] {
-    background-color: #EAF2FF;
-    padding: 16px;
-    border-radius: 10px;
-    border: 1px solid #BFD3F2;
-}
-
-[data-testid="stMetricLabel"] {
-    color: #16324F !important;
-    font-weight: 600 !important;
-}
-
-[data-testid="stMetricValue"] {
-    color: #16324F !important;
-}
-
-/* Filter boxes */
-div[data-baseweb="select"] > div {
-    background-color: #F8FAFC;
-    border: 1px solid #CBD5E1;
-    border-radius: 7px;
-}
-
-/* Filter labels */
-[data-testid="stSidebar"] [data-testid="stWidgetLabel"] p {
-    font-weight: 700 !important;
-    color: #16324F !important;
-}
-
-/* Primary button */
-div.stButton > button {
-    background-color: #2563EB !important;
-    color: white !important;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-}
-
-div.stButton > button:hover {
-    background-color: #1D4ED8 !important;
-    color: white !important;
-}
-
-</style>
-""", unsafe_allow_html=True)
-
-
-
-
 st.title("AI-Powered Hospital Readmissions Analytics")
 
 st.caption(
     "Interactive analysis of CMS hospital readmission performance "
     "with grounded GenAI-generated executive insights."
-)
-
-st.markdown("### Understanding the Key Metrics")
-
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    st.markdown("""
-    **Excess Readmission Ratio (ERR)**  
-    Compares a hospital's **predicted readmissions** with the number expected
-    for hospitals treating similar patients.
-
-    - **ERR > 1:** Above expected
-    - **ERR = 1:** At expected
-    - **ERR < 1:** Below expected
-    """)
-
-with col2:
-    st.markdown("""
-    **Predicted Readmission Rate**  
-    The hospital's estimated **risk-adjusted readmission rate**, accounting
-    for the types of patients treated.
-    """)
-
-with col3:
-    st.markdown("""
-    **Expected Readmission Rate**  
-    The readmission rate expected if the hospital's patients were treated
-    at an average hospital with similar patients.
-    """)
-
-st.info(
-    "Example: An ERR of 1.05 means predicted readmissions are approximately "
-    "5% above the expected benchmark. ERR measures performance relative to "
-    "expected readmissions—it is not the same as the absolute readmission rate."
 )
 
 
@@ -462,12 +361,7 @@ else:
         labels={
             "Facility Name": "",
             "Difference from Expected": "% Difference from Expected"
-        },
-	color_discrete_map={
-        "Above expected": "#C0392B",
-        "Below expected": "#2E8B57",
-        "At expected": "#6B7280"
-    }
+        }
     )
 
     # Expected benchmark
@@ -636,13 +530,7 @@ else:
                 "Below expected",
                 "At expected"
             ]
-        },
-	color_discrete_map={
-        "Above expected": "#C0392B",
-        "Below expected": "#2E8B57",
-        "At expected": "#6B7280"
-    }
-
+        }
     )
 
     # ERR = 1 corresponds to 0%
@@ -832,13 +720,7 @@ else:
                 "Below expected",
                 "At expected"
             ]
-        },
-	color_discrete_map={
-        "Above expected": "#C0392B",
-        "Below expected": "#2E8B57",
-        "At expected": "#6B7280"
-    }
-
+        }
     )
 
     # 0% corresponds to ERR = 1.0
@@ -952,98 +834,18 @@ hospital_table = (
     )
 )
 
-# Create display copy
-hospital_table_display = hospital_table.copy()
-
-# Rename columns for cleaner display
-hospital_table_display = hospital_table_display.rename(columns={
-    "Hospital overall rating": "Hospital Rating",
-    "Excess Readmission Ratio": "ERR",
-    "Predicted Readmission Rate": "Predicted Rate",
-    "Expected Readmission Rate": "Expected Rate"
-})
-
-# Format numeric columns
-hospital_table_display["ERR"] = (
-    hospital_table_display["ERR"]
-    .map(lambda x: f"{x:.3f}" if pd.notna(x) else "")
+st.dataframe(
+    hospital_table,
+    use_container_width=True,
+    hide_index=True
 )
-
-hospital_table_display["Predicted Rate"] = (
-    hospital_table_display["Predicted Rate"]
-    .map(lambda x: f"{x:.2f}%" if pd.notna(x) else "")
-)
-
-hospital_table_display["Expected Rate"] = (
-    hospital_table_display["Expected Rate"]
-    .map(lambda x: f"{x:.2f}%" if pd.notna(x) else "")
-)
-
-# Convert dataframe to HTML
-table_html = hospital_table_display.to_html(
-    index=False,
-    classes="hospital-table",
-    border=0
-)
-
-# CSS + HTML table
-styled_html = f"""
-<style>
-
-.hospital-table {{
-    width: 100%;
-    border-collapse: collapse;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-}}
-
-.hospital-table th {{
-    background-color: #16324F;
-    color: white;
-    font-weight: 600;
-    text-align: left;
-    padding: 12px;
-    border: 1px solid #DCE3EA;
-}}
-
-.hospital-table td {{
-    padding: 10px 12px;
-    border: 1px solid #DCE3EA;
-    color: #1F2937;
-}}
-
-/* Emphasize ERR column */
-.hospital-table td:nth-child(4) {{
-    background-color: #FFF4E5;
-    font-weight: 700;
-    color: #8A4B08;
-}}
-
-.hospital-table tr:nth-child(even) {{
-    background-color: #F8FAFC;
-}}
-
-.hospital-table tr:nth-child(odd) {{
-    background-color: white;
-}}
-
-.hospital-table tr:hover {{
-    background-color: #EEF4FF;
-}}
-
-</style>
-
-{table_html}
-"""
-
-st.html(styled_html)
 
 # ---------------------------------------------------------
 # AI-generated insights
 # ---------------------------------------------------------
 st.subheader("AI-Generated Insights")
 
-if st.button("✨ Generate AI Insights", type="primary"):
+if st.button("Generate AI Insights"):
 
     verified_metrics = {
         "state": selected_state,
