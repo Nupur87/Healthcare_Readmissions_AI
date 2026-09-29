@@ -50,30 +50,6 @@ Example:
 - `ERR = 1.05` → approximately 5% above expected
 - `ERR = 0.95` → approximately 5% below expected
 
-## Analytical Workflow
-
-```text
-CMS HRRP Data
-        +
-CMS Hospital General Information
-        ↓
-Data Cleaning and Validation
-        ↓
-Python Analysis
-        ↓
-Verified Analytical Metrics
-        ↓
-Interactive Streamlit Dashboard
-        ↓
-Structured GenAI Prompt
-        ↓
-OpenAI API
-        ↓
-AI-Generated Executive Insights
-        ↓
-Human Validation
-
-
 ## Key Findings
 
 - Hip/Knee Replacement had the highest average ERR across the six HRRP conditions analyzed, although the average was only slightly above the expected benchmark.
@@ -159,3 +135,26 @@ Potential extensions include:
 - richer hospital benchmarking
 - downloadable reports
 - expanded GenAI follow-up analysis
+
+## Analytical Workflow
+
+```text
+CMS HRRP Data
+        +
+CMS Hospital General Information
+        ↓
+Data Cleaning and Validation
+        ↓
+Python Analysis
+        ↓
+Verified Analytical Metrics
+        ↓
+Interactive Streamlit Dashboard
+        ↓
+Structured GenAI Prompt
+        ↓
+OpenAI API
+        ↓
+AI-Generated Executive Insights
+        ↓
+Human Validation
