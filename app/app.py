@@ -1053,14 +1053,13 @@ if st.button("✨ Generate AI Insights", type="primary"):
     if not api_key:
         st.warning(
             "AI insights are temporarily unavailable. "
-            "The rest of the dashboard remains fully functional."
+            "The dashboard and analytical results remain available."
         )
 
     else:
-	
-	try:
-        	client = OpenAI(api_key=api_key)
 
+        try:
+            client = OpenAI(api_key=api_key)
     verified_metrics = {
         "state": selected_state,
         "condition": selected_condition,
