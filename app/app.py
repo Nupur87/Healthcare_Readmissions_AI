@@ -1060,64 +1060,64 @@ if st.button("✨ Generate AI Insights", type="primary"):
 
         try:
             client = OpenAI(api_key=api_key)
-    verified_metrics = {
-        "state": selected_state,
-        "condition": selected_condition,
-        "hospital_ownership": selected_ownership,
-        "hospital_rating": selected_rating,
-        "average_ERR": round(avg_err, 6),
-        "average_predicted_readmission_rate": round(
-            avg_predicted_rate, 6
-        ),
-        "average_expected_readmission_rate": round(
-            avg_expected_rate, 6
-        ),
-        "reporting_hospitals": int(reporting_hospitals),
-        "percent_hospitals_above_expected": round(
-            above_expected_pct, 1
-        )
+    	   verified_metrics = {
+                   "state": selected_state,
+                   "condition": selected_condition,
+                   "hospital_ownership": selected_ownership,
+                   "hospital_rating": selected_rating,
+                   "average_ERR": round(avg_err, 6),
+                   "average_predicted_readmission_rate": round(
+                    avg_predicted_rate, 6
+                     ),
+                   "average_expected_readmission_rate": round(
+                   avg_expected_rate, 6
+                     ),
+                   "reporting_hospitals": int(reporting_hospitals),
+                   "percent_hospitals_above_expected": round(
+                   above_expected_pct, 1
+                    )
     }
 
-    prompt = f"""
-You are assisting a healthcare operations analyst.
+    	   prompt = f"""
+     You are assisting a healthcare operations analyst.
 
-Use ONLY the verified metrics provided below.
+     Use ONLY the verified metrics provided below.
 
-Do not invent causes, clinical explanations, patient characteristics,
-hospital attributes, or additional statistics.
+     Do not invent causes, clinical explanations, patient characteristics,
+     hospital attributes, or additional statistics.
 
-Provide:
+     Provide:
 
-1. Key observed findings
-2. Analytical interpretation
-3. What cannot be concluded
-4. Recommended follow-up analysis
-5. Executive summary in no more than 3 sentences
+     1. Key observed findings
+     2. Analytical interpretation
+     3. What cannot be concluded
+     4. Recommended follow-up analysis
+     5. Executive summary in no more than 3 sentences
 
-Important:
-- ERR > 1 means predicted readmissions are above the expected benchmark.
-- ERR < 1 means predicted readmissions are below expected.
-- Distinguish absolute readmission rates from performance relative to expected.
-- Treat ownership and rating findings as associations, not causal effects.
-- Do not describe a hospital, state, ownership type, or rating group as poor performing.
-- Mention sample-size limitations where relevant.
-- Apply conclusions only to the hospitals represented in the filtered data.
+    Important:
+    - ERR > 1 means predicted readmissions are above the expected benchmark.
+    - ERR < 1 means predicted readmissions are below expected.
+    - Distinguish absolute readmission rates from performance relative to expected.
+    - Treat ownership and rating findings as associations, not causal effects.
+    - Do not describe a hospital, state, ownership type, or rating group as poor performing.
+    - Mention sample-size limitations where relevant.
+    - Apply conclusions only to the hospitals represented in the filtered data.
 
-Verified metrics:
+         Verified metrics:
 
-{verified_metrics}
-"""
+         {verified_metrics}
+          """
 
-    with st.spinner("Generating AI insights..."):
+           with st.spinner("Generating AI insights..."):
 
-        response = client.responses.create(
-            model="gpt-5.6-luna",
-            input=prompt
-        )
+           response = client.responses.create(
+              model="gpt-5.6-luna",
+              input=prompt
+            )
 
-        ai_output = response.output_text
+          ai_output = response.output_text
 
-    st.markdown(ai_output)
+         st.markdown(ai_output)
 
         except Exception:
             st.error(
