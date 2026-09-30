@@ -2,7 +2,13 @@
 
 An interactive healthcare analytics project using CMS hospital readmission data, Python, Streamlit, Plotly, and GenAI.
 
-Live Demo Link: https://healthcarereadmissionsai-f3ckvbyktui2rtwpdzlflg.streamlit.app/
+## Live Demo
+
+[Launch the Streamlit App](https://healthcarereadmissionsai-f3ckvbyktui2rtwpdzlflg.streamlit.app/)
+
+### App Preview
+
+![AI-Powered Hospital Readmissions Analytics Dashboard](assets/app_screenshot.png)
 
 ## Project Objective
 
