@@ -7,6 +7,11 @@ import plotly.express as px
 
 import time
 
+try:
+    api_key = st.secrets["OPENAI_API_KEY"]
+except Exception:
+    api_key = None
+
 start = time.time()
 
 # ---------------------------------------------------------
@@ -150,9 +155,9 @@ df = load_data()
 
 
 
-client = OpenAI(
-    api_key=st.secrets["OPENAI_API_KEY"]
-)
+#client = OpenAI(
+#   api_key=st.secrets["OPENAI_API_KEY"]
+#)
 
 
 
@@ -1045,6 +1050,17 @@ st.subheader("AI-Generated Insights")
 
 if st.button("✨ Generate AI Insights", type="primary"):
 
+    if not api_key:
+        st.warning(
+            "AI insights are temporarily unavailable. "
+            "The rest of the dashboard remains fully functional."
+        )
+
+    else:
+	
+	try:
+        	client = OpenAI(api_key=api_key)
+
     verified_metrics = {
         "state": selected_state,
         "condition": selected_condition,
@@ -1103,6 +1119,12 @@ Verified metrics:
         ai_output = response.output_text
 
     st.markdown(ai_output)
+
+        except Exception:
+            st.error(
+                "AI insights could not be generated at the moment. "
+                "Please try again later."
+            )
 
 # ---------------------------------------------------------
 # Interpretation note
