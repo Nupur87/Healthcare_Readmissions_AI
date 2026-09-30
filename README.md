@@ -8,7 +8,8 @@ An interactive healthcare analytics project using CMS hospital readmission data,
 
 ### App Preview
 
-![AI-Powered Hospital Readmissions Analytics Dashboard](assets/app_screenshot.png)
+![Dashboard Overview](assets/app_screenshot.png)
+![AI Insights Section](assets/app_screenshot2.png)
 
 ## Project Objective
 
