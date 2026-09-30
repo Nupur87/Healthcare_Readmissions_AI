@@ -2,6 +2,8 @@
 
 An interactive healthcare analytics project using CMS hospital readmission data, Python, Streamlit, Plotly, and GenAI.
 
+Live Demo Link: https://healthcarereadmissionsai-f3ckvbyktui2rtwpdzlflg.streamlit.app/
+
 ## Project Objective
 
 The goal of this project is to analyze hospital readmission performance and use GenAI to convert verified analytical outputs into concise executive insights.
